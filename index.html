@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>Máquina de Memes</title>
+  </head>
+  <body>
+    <div class="container">
+      <div class="app">
+        <div class="logo">
+          <img src="./public/logo.png" alt="logo" />
+        </div>
+        <div class="app-image" id="downloaded">
+          <textarea
+            name=""
+            class="text-box"
+            placeholder="Digite seu meme"
+            aria-multiline="true"
+          ></textarea>
+          <div id="display-image"></div>
+          <textarea
+            name=""
+            class="text-box"
+            placeholder="Digite seu meme"
+            aria-multiline="true"
+          ></textarea>
+        </div>
+        <div class="app-photo-picker">
+          <select
+            onchange="changeMemePicture(this.value)"
+            id="meme-list"
+          ></select>
+          <input
+            type="file"
+            id="image-input"
+            accept="image/jpg, image/png, image/jpeg"
+          />
+        </div>
+        <div class="download">
+          <button id="btn-download">Download</button>
+        </div>
+      </div>
+    </div>
+    <script defer src="./scripts/script.js"></script>
+    <script defer src="./scripts/html2canvas.js"></script>
+    <script>
+      document.getElementById("btn-download").onclick = () => {
+        const screenshotPrint = document.querySelector("#downloaded");
+
+        html2canvas(screenshotPrint).then((canvas) => {
+          const base64Image = canvas.toDataURL("image/png");
+          let anchor = document.createElement("a");
+          anchor.setAttribute("href", base64Image);
+          anchor.setAttribute("download", "my-meme.png");
+          anchor.click();
+          anchor.remove();
+        });
+      };
+    </script>
+  </body>
+</html>
