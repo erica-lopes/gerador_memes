@@ -3,7 +3,6 @@
 > Repositório front-end de uma máquina de memes, desenvolvido em HTML, CSS e Javascript.
  
 &nbsp;
-
 ### 🧱 Features desenvolvidas
 ```bash
 >HTML Semântico
@@ -21,4 +20,3 @@
 >GitHub
 >VSCode
 ```
- &nbsp;
